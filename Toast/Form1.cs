@@ -21,7 +21,7 @@ namespace Toast
 
         private void btnToastInCenter_Click(object sender, EventArgs e)
         {
-            Toast tst = new Toast(this);
+            Toast tst = new Toast(panel1);
             //tst.LocationX = this.Size.Width/2-tst.SIZE_X/2;
             //tst.LocationY = this.Size.Height - 200;
             //tst.Show("토스트 중앙메시지");

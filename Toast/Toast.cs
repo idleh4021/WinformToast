@@ -73,6 +73,12 @@ namespace Toast
             else
             {
                 Control ctl = (Control)_owner;
+                //Rectangle screenRectangle = ctl.RectangleToScreen(ctl.ClientRectangle);
+                //int titleHeight = screenRectangle.Top - ctl.Top;
+                int clientHeight = ctl.RectangleToScreen(ctl.ClientRectangle).Height;
+                int StartLocationOfToastX = (ctl.Width / 2) - (this.SIZE_X / 2); // 화면 중앙에서 토스트의 반크기를 뺌 = 시작위치
+                int StartLocationOfToastY =  (clientHeight * PercentageOfHeight / 100) - this.SIZE_Y;
+                this.Show(msg, _owner, StartLocationOfToastX, StartLocationOfToastY, duration);
             }
             
         }
