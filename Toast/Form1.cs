@@ -24,13 +24,13 @@ namespace Toast
             Toast tst = new Toast(this);
             tst.LocationX = this.Size.Width/2-tst.SIZE_X/2;
             tst.LocationY = this.Size.Height - 200;
-            tst.Show("test");
+            tst.Show("토스트 중앙메시지");
         }
 
         private void btnToastAtMousePointer_Click(object sender, EventArgs e)
         {
             Toast tst = new Toast(this);
-            tst.Show("zz", this,PositionX,PositionY,3000);
+            tst.Show("마우스 포인터 메시지", this,PositionX,PositionY,3000);
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
