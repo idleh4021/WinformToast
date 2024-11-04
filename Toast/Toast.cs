@@ -30,7 +30,7 @@ namespace Toast
             this.Popup += new PopupEventHandler(this.OnPopup);
             this.Draw += new DrawToolTipEventHandler(this.OnDraw);
             //_owner = OwnerForm;
-            _owner = (Form)OwnerForm;
+            _owner = OwnerForm;
         }
 
         string m_EndSpecialText;
@@ -56,6 +56,25 @@ namespace Toast
         public void Show(string msg)
         {
             this.Show(msg, _owner,  LocationX, LocationY, duration);
+        }
+
+        public void ShowInCenterScreen(string msg, int PercentageOfHeight) { 
+
+            if(_owner is Form)
+            {
+                Form frm = (Form)_owner;
+                Rectangle screenRectangle = frm.RectangleToScreen(frm.ClientRectangle);
+                int titleHeight = screenRectangle.Top - frm.Top;
+                int clientHeight = frm.RectangleToScreen(frm.ClientRectangle).Height;
+                int StartLocationOfToastX = (frm.Width / 2) - (this.SIZE_X / 2); // 화면 중앙에서 토스트의 반크기를 뺌 = 시작위치
+                int StartLocationOfToastY = titleHeight + (clientHeight * PercentageOfHeight / 100) - this.SIZE_Y;
+                this.Show(msg, _owner, StartLocationOfToastX, StartLocationOfToastY, duration);
+            }
+            else
+            {
+                Control ctl = (Control)_owner;
+            }
+            
         }
         
         //private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip
